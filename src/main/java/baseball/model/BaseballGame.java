@@ -3,14 +3,12 @@ package baseball.model;
 import static baseball.Constant.CommonConstant.NUM_END_IDX;
 import static baseball.Constant.CommonConstant.NUM_START_IDX;
 import static baseball.Constant.CommonConstant.VALID_NUM_LENGTH;
-import static baseball.model.GameJudge.isValidWord;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import org.assertj.core.util.Lists;
 
 public class BaseballGame {
-
     private List<Integer> answerNumList;
 
     public BaseballGame() {
@@ -22,10 +20,17 @@ public class BaseballGame {
     }
 
     public void run() {
-        String playerNumWord = GameGuide.printAskInputNumber();
-        isValidWord(playerNumWord);
+        boolean isNotStrike;
+        do {
+            String playerNumWord = GameGuidePrinter.printAskInputNumber();
+            GameSystem.isValidWord(playerNumWord);
 
-        String wantReGame = GameGuide.printGameFinish();
+            Player player = new Player(convertWordToNumArray(playerNumWord));
+            player.judgeFromAnswer(answerNumList);
+            GameGuidePrinter.printHint(player);
+
+            isNotStrike = !player.isThreeStrike();
+        } while(isNotStrike);
     }
 
     private void generateAnswerNumList() {
@@ -43,5 +48,15 @@ public class BaseballGame {
         }
 
         newAnswerNumList.add(newNum);
+    }
+
+    private Integer [] convertWordToNumArray(String numWord) {
+        Integer [] numArray = new Integer[3];
+
+        for (int i = 0; i < numWord.length(); i++) {
+            numArray[i] = Character.getNumericValue(numWord.charAt(i));
+        }
+
+        return numArray;
     }
 }
