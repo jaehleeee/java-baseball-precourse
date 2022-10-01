@@ -1,7 +1,7 @@
 package baseball.Constant;
 
 public interface MessageConstant {
-    String  ASK_INPUT_NUMBER = "숫자를 입력해주세요. : ";
+    String ASK_INPUT_NUMBER = "숫자를 입력해주세요. : ";
     String GUIDE_GAME_FINISH = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     String ASK_RE_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 

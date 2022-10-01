@@ -18,7 +18,7 @@ public class GameSystem {
 
     private Boolean wantReGame() {
         String reGameWord = GameGuidePrinter.printGameFinish();
-        isValidReGameWord(reGameWord);
+        validateReGameWord(reGameWord);
 
         int reGameNum = Character.getNumericValue(reGameWord.charAt(0));
         return isReGame(reGameNum);
@@ -34,37 +34,37 @@ public class GameSystem {
         return false;
     }
 
-    private static void isValidReGameWord(String reGameWord) {
-        isValidLength(reGameWord, VALID_RE_GAME_NUM_LENGTH);
-        isAllDigit(reGameWord);
+    private static void validateReGameWord(String reGameWord) {
+        validateLength(reGameWord, VALID_RE_GAME_NUM_LENGTH);
+        validateAllDigit(reGameWord);
     }
 
 
-    public static void isValidWord(String playerNumWord) {
-        isValidLength(playerNumWord, VALID_NUM_LENGTH);
-        isAllDigit(playerNumWord);
-        isAllDifferent(playerNumWord);
+    public static void validateWord(String playerNumWord) {
+        validateLength(playerNumWord, VALID_NUM_LENGTH);
+        validateAllDigit(playerNumWord);
+        validateAllDifferent(playerNumWord);
     }
 
-    public static void isValidLength(String word, int validLength) throws IllegalArgumentException {
+    private static void validateLength(String word, int validLength) throws IllegalArgumentException {
         if (word.length() != validLength) {
             throw new IllegalArgumentException(WRONG_NUM_LENGTH);
         }
     }
 
-    public static void isAllDigit(String word) {
+    private static void validateAllDigit(String word) {
         for (int i = 0; i < word.length(); i++) {
-            isDigitByIndex(word, i);
+            validateDigitByIndex(word, i);
         }
     }
 
-    public static void isDigitByIndex(String word, int index) throws IllegalArgumentException {
+    private static void validateDigitByIndex(String word, int index) throws IllegalArgumentException {
         if (!Character.isDigit(word.charAt(index))) {
             throw new IllegalArgumentException(WRONG_TYPE);
         }
     }
 
-    public static void isAllDifferent(String word) throws IllegalArgumentException {
+    public static void validateAllDifferent(String word) throws IllegalArgumentException {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < word.length(); i++) {
             set.add(word.charAt(i));

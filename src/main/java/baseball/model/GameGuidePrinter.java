@@ -22,7 +22,7 @@ public class GameGuidePrinter {
 
     private static void printHintBallAndStrike(Player player) {
         if (player.hasBallAndStrike()) {
-            System.out.println(String.format(GUIDE_HINT_BALL_STRIKE, player.getBall() ,player.getStrike()));
+            System.out.println(String.format(GUIDE_HINT_BALL_STRIKE, player.getBall(), player.getStrike()));
             return;
         }
 

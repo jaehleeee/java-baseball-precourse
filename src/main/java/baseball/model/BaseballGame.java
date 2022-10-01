@@ -20,17 +20,17 @@ public class BaseballGame {
     }
 
     public void run() {
-        boolean isNotStrike;
+        boolean isNotGameClear;
         do {
             String playerNumWord = GameGuidePrinter.printAskInputNumber();
-            GameSystem.isValidWord(playerNumWord);
+            GameSystem.validateWord(playerNumWord);
 
             Player player = new Player(convertWordToNumArray(playerNumWord));
             player.judgeFromAnswer(answerNumList);
             GameGuidePrinter.printHint(player);
 
-            isNotStrike = !player.isThreeStrike();
-        } while(isNotStrike);
+            isNotGameClear = !player.isThreeStrike();
+        } while (isNotGameClear);
     }
 
     private void generateAnswerNumList() {
@@ -50,8 +50,8 @@ public class BaseballGame {
         newAnswerNumList.add(newNum);
     }
 
-    private Integer [] convertWordToNumArray(String numWord) {
-        Integer [] numArray = new Integer[3];
+    private Integer[] convertWordToNumArray(String numWord) {
+        Integer[] numArray = new Integer[3];
 
         for (int i = 0; i < numWord.length(); i++) {
             numArray[i] = Character.getNumericValue(numWord.charAt(i));
