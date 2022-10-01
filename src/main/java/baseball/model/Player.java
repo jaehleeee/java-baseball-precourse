@@ -7,10 +7,12 @@ public class Player {
     private int ball;
     private int strike;
 
-    public Player(Integer[] newNumArray) {
+    public Player(Integer[] newNumArray, List<Integer> answerNumList) {
         numArray = newNumArray;
         ball = 0;
         strike = 0;
+
+        judgeFromAnswer(answerNumList);
     }
 
     public int getBall() {
@@ -21,7 +23,7 @@ public class Player {
         return strike;
     }
 
-    public void judgeFromAnswer(List<Integer> answerList) {
+    private void judgeFromAnswer(List<Integer> answerList) {
         for (int i = 0; i < numArray.length; i++) {
             checkHintFromSingleDigit(answerList, i);
         }

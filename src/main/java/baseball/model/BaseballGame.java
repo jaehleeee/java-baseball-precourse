@@ -25,10 +25,8 @@ public class BaseballGame {
             String playerNumWord = GameGuidePrinter.printAskInputNumber();
             GameSystem.validateWord(playerNumWord);
 
-            Player player = new Player(convertWordToNumArray(playerNumWord));
-            player.judgeFromAnswer(answerNumList);
+            Player player = new Player(convertWordToNumArray(playerNumWord), answerNumList);
             GameGuidePrinter.printHint(player);
-
             isNotGameClear = !player.isThreeStrike();
         } while (isNotGameClear);
     }

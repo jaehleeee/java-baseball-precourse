@@ -20,8 +20,7 @@ class PlayerTest {
     @Test
     @DisplayName("Player 테스트 :: 3 strike")
     public void playerTest_3strike() {
-        player = new Player(new Integer[]{1,2,3});
-        player.judgeFromAnswer(answerNumList);
+        player = new Player(new Integer[]{1,2,3}, answerNumList);
 
         Assertions.assertTrue(player.getBall() == 0);
         Assertions.assertTrue(player.getStrike() == 3);
@@ -31,8 +30,7 @@ class PlayerTest {
     @Test
     @DisplayName("Player 테스트 :: 2ball")
     public void playerTest_2ball() {
-        Player player = new Player(new Integer[]{2,1,4});
-        player.judgeFromAnswer(answerNumList);
+        Player player = new Player(new Integer[]{2,1,4}, answerNumList);
 
         Assertions.assertTrue(player.getBall() == 2);
         Assertions.assertTrue(player.getStrike() == 0);
@@ -45,8 +43,7 @@ class PlayerTest {
     @Test
     @DisplayName("Player 테스트 :: 2strike")
     public void playerTest_2strike() {
-        Player player = new Player(new Integer[]{1,2,4});
-        player.judgeFromAnswer(answerNumList);
+        Player player = new Player(new Integer[]{1,2,4}, answerNumList);
 
         Assertions.assertTrue(player.getBall() == 0);
         Assertions.assertTrue(player.getStrike() == 2);
@@ -59,8 +56,7 @@ class PlayerTest {
     @Test
     @DisplayName("Player 테스트 :: 1ball 1strike")
     public void playerTest_1ball() {
-        Player player = new Player(new Integer[]{1,3,4});
-        player.judgeFromAnswer(answerNumList);
+        Player player = new Player(new Integer[]{1,3,4}, answerNumList);
 
         Assertions.assertTrue(player.getBall() == 1);
         Assertions.assertTrue(player.getStrike() == 1);
@@ -70,8 +66,7 @@ class PlayerTest {
     @Test
     @DisplayName("Player 테스트 :: nothing")
     public void playerTest_nothing() {
-        player = new Player(new Integer[]{4,5,6});
-        player.judgeFromAnswer(answerNumList);
+        player = new Player(new Integer[]{4,5,6}, answerNumList);
 
         Assertions.assertTrue(player.getBall() == 0);
         Assertions.assertTrue(player.getStrike() == 0);

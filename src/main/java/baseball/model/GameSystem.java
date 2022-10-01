@@ -64,7 +64,7 @@ public class GameSystem {
         }
     }
 
-    public static void validateAllDifferent(String word) throws IllegalArgumentException {
+    private static void validateAllDifferent(String word) throws IllegalArgumentException {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < word.length(); i++) {
             set.add(word.charAt(i));
