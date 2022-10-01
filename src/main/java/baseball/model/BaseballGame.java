@@ -11,19 +11,27 @@ public class BaseballGame {
     private static final int NUM_END_IDX = 9;
     private List<Integer> answerNumList;
 
-    public void start() {
+    public BaseballGame() {
         generateAnswerNumList();
     }
 
+    public List<Integer> getAnswerNumList() {
+        return answerNumList;
+    }
+
+    public void start() {
+        // TODO
+
+
+    }
+
     private void generateAnswerNumList() {
-        List<Integer> newAnswerNumList = Lists.newArrayList();
+        answerNumList = Lists.newArrayList();
 
-        while (newAnswerNumList.size() < ANSWER_NUM_SIZE) {
+        while (answerNumList.size() < ANSWER_NUM_SIZE) {
             Integer newNum = Randoms.pickNumberInRange(NUM_START_IDX, NUM_END_IDX);
-            addNumToList(newAnswerNumList, newNum);
+            addNumToList(answerNumList, newNum);
         }
-
-        answerNumList = newAnswerNumList;
     }
 
     private void addNumToList(List<Integer> newAnswerNumList, Integer newNum) {
