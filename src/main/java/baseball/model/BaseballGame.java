@@ -1,14 +1,16 @@
 package baseball.model;
 
+import static baseball.Constant.CommonConstant.NUM_END_IDX;
+import static baseball.Constant.CommonConstant.NUM_START_IDX;
+import static baseball.Constant.CommonConstant.VALID_NUM_LENGTH;
+import static baseball.model.GameJudge.isValidWord;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import org.assertj.core.util.Lists;
 
 public class BaseballGame {
 
-    private static final int ANSWER_NUM_SIZE = 3;
-    private static final int NUM_START_IDX = 1;
-    private static final int NUM_END_IDX = 9;
     private List<Integer> answerNumList;
 
     public BaseballGame() {
@@ -19,16 +21,17 @@ public class BaseballGame {
         return answerNumList;
     }
 
-    public void start() {
-        // TODO
+    public void run() {
+        String playerNumWord = GameGuide.printAskInputNumber();
+        isValidWord(playerNumWord);
 
-
+        String wantReGame = GameGuide.printGameFinish();
     }
 
     private void generateAnswerNumList() {
         answerNumList = Lists.newArrayList();
 
-        while (answerNumList.size() < ANSWER_NUM_SIZE) {
+        while (answerNumList.size() < VALID_NUM_LENGTH) {
             Integer newNum = Randoms.pickNumberInRange(NUM_START_IDX, NUM_END_IDX);
             addNumToList(answerNumList, newNum);
         }

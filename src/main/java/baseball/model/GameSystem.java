@@ -6,7 +6,7 @@ public class GameSystem {
     public void runGameSystem() {
         do {
             baseballGame = new BaseballGame();
-            baseballGame.start();
+            baseballGame.run();
         } while (wantReGame());
     }
 
